@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import sys, pygame, os
 import time
 
@@ -71,12 +73,19 @@ class SickGUI:
     def build_menu(self):
         items = ["test123", "lalalalalala", "kjhfdkjhfkdsj"];
 
+    def handle_events(self):
+            for e in pygame.event.get():
+                if e.type == pygame.QUIT:
+                    sys.exit()
+                elif e.type == pygame.KEYDOWN:
+                    if e.key == pygame.K_ESCAPE:
+                        sys.exit()
+
     def run(self):
 
-        while 1:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT: sys.exit()
+        while True:
 
+            self.handle_events()
             self.update_gui()
 
 if __name__ == "__main__":
